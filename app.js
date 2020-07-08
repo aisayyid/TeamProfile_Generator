@@ -24,26 +24,53 @@ const userQuestions = [
             "Engineer",
             "Intern"
         ]
-     },
+    },
 ]
 
-function managerQuestions(){
+function managerQuestions() {
     const employeeManager = [
         {
             type: "input",
-            name: "employee name",
-            message: "What is your engineer's name?"
+            name: "employeename",
+            message: "What is your manager's name?"
         },
+    ]
+   askQuestion(employeeManager);
+}
+
+function engineerQuestions(){
+    const employeeEngineer = [
+        {
+        
+
+        }
+
     ]
 }
 
-
-
-
-inquirer.prompt();
-if(userQuestions.choices === "Manager"){
-    managerQuestions();
+function askQuestion(questions){
+    inquirer.prompt(questions)
 }
+
+inquirer.prompt(userQuestions)
+    .then(function (answer) {
+        ///determine which role was selected
+        switch (answer.role) {
+            case "Engineer":
+                //run engineer function
+                break;
+            case "Manager":
+                //run manger function
+                managerQuestions()
+                break;
+            case "Intern":
+                //run Intern function
+                break;
+        }
+
+    })
+
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
