@@ -26,7 +26,7 @@ const userQuestions = [
         ]
     },
 ]
-
+//Setting up function for manager specific question.
 function managerQuestions() {
     const employeeManager = [
         {
@@ -37,7 +37,7 @@ function managerQuestions() {
     ]
     askQuestion(employeeManager);
 }
-
+//setting up function for engineer specific question.
 function engineerQuestions() {
     const employeeEngineer = [
         {
@@ -48,6 +48,7 @@ function engineerQuestions() {
     ]
     askQuestion(employeeEngineer);
 }
+//setting up function for intern specific question.
 function internQuestions() {
     const employeeIntern = [
         {
@@ -56,9 +57,10 @@ function internQuestions() {
             message: "What is your intern's university?"
         },
     ]
+
     askQuestion(employeeIntern);
 }
-
+//setting up function for general employee questions.
 function employeeQuestions() {
     const questionsForAll = [
         {
