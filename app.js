@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 //Global array that contains all of the employee info.
-const employeeInfo =[];
+const employeeInfo = [];
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -22,12 +22,28 @@ const userQuestions = [
         choices: [
             "Manager",
             "Engineer",
-            "Intern",
+            "Intern"
         ]
-    },
+     },
 ]
 
-inquirer.prompt(userQuestions)
+function managerQuestions(){
+    const employeeManager = [
+        {
+            type: "input",
+            name: "employee name",
+            message: "What is your engineer's name?"
+        },
+    ]
+}
+
+
+
+
+inquirer.prompt();
+if(userQuestions.choices === "Manager"){
+    managerQuestions();
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
