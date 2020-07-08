@@ -31,24 +31,53 @@ function managerQuestions() {
     const employeeManager = [
         {
             type: "input",
-            name: "employeename",
-            message: "What is your manager's name?"
+            name: "office-number",
+            message: "What is the manager's room number?"
         },
     ]
-   askQuestion(employeeManager);
+    askQuestion(employeeManager);
 }
 
-function engineerQuestions(){
+function engineerQuestions() {
     const employeeEngineer = [
         {
-        
+            type: "input",
+            name: "GitHub",
+            message: "What is your engineer's GitHub profile?"
 
-        }
+        },
 
     ]
+    askQuestion(employeeEngineer);
+}
+function internQuestions() {
+    const employeeIntern = [
+        {
+            type: "input",
+            name: "intern-school",
+            message: "What is your intern's university?"
+
+        },
+
+    ]
+    askQuestion(employeeIntern);
+ 
 }
 
-function askQuestion(questions){
+
+function employeeQuestions(){
+    const questionsForAll = [
+        {
+            type: "input",
+            name: "employee-name",
+            message: "What is this employee's name?"
+
+        },
+    ]
+    askQuestion(questionsForAll);
+}
+//function that calls const depending on role picked.
+function askQuestion(questions) {
     inquirer.prompt(questions)
 }
 
@@ -58,13 +87,16 @@ inquirer.prompt(userQuestions)
         switch (answer.role) {
             case "Engineer":
                 //run engineer function
+                engineerQuestions();
                 break;
             case "Manager":
-                //run manger function
-                managerQuestions()
+                //run manager function
+                managerQuestions();
                 break;
             case "Intern":
                 //run Intern function
+                internQuestions();
+            
                 break;
         }
 
