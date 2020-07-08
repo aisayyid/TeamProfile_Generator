@@ -32,7 +32,7 @@ function managerQuestions() {
         {
             type: "input",
             name: "office-number",
-            message: "What is the manager's room number?"
+            message: "What is the manager's office number?"
         },
     ]
     askQuestion(employeeManager);
