@@ -44,9 +44,7 @@ function engineerQuestions() {
             type: "input",
             name: "GitHub",
             message: "What is your engineer's GitHub profile?"
-
         },
-
     ]
     askQuestion(employeeEngineer);
 }
@@ -56,22 +54,27 @@ function internQuestions() {
             type: "input",
             name: "intern-school",
             message: "What is your intern's university?"
-
         },
-
     ]
     askQuestion(employeeIntern);
- 
 }
 
-
-function employeeQuestions(){
+function employeeQuestions() {
     const questionsForAll = [
         {
             type: "input",
             name: "employee-name",
             message: "What is this employee's name?"
-
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is this employee's id number?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is this employee's email?"
         },
     ]
     askQuestion(questionsForAll);
@@ -96,10 +99,8 @@ inquirer.prompt(userQuestions)
             case "Intern":
                 //run Intern function
                 internQuestions();
-            
                 break;
         }
-
     })
 
 
