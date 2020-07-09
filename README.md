@@ -24,7 +24,7 @@
   
   ![](images/SwitchCase.png)
   
-  [](images/WriteFileFunction.png)
+  ![](images/WriteFileFunction.png)
   ## License
   MIT
   ## Contributing
