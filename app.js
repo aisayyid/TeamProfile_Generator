@@ -45,7 +45,7 @@ const questionsForAll = [
     },
  ]
  //Setting up function for manager specific question.
- function managerQuestions() {
+ async function managerQuestions() {
     const employeeManager = [
         {
             type: "input",
@@ -53,8 +53,15 @@ const questionsForAll = [
             message: "What is the manager's office number?"
         },
     ]
-    //concat method to bring in the questionsForAll array once employee manager has gone through.
-    askQuestion(employeeManager.concat(questionsForAll));
+     //concat method to bring in the questionsForAll array once employee manager has gone through.
+    //made it into an object to easily transfer data to class.
+    const answers = await inquirer.prompt(employeeManager.concat(questionsForAll));
+
+    //Creating a new manager usign the class of Intern
+    const manager = new Manager(answers);
+    //pushing new manager into the global array of employees.
+    employeeInfo.push(manager);
+    addEmployee();
  }
  //setting up function for engineer specific question.
  async function engineerQuestions() {
@@ -65,13 +72,13 @@ const questionsForAll = [
             message: "What is your engineer's GitHub profile?"
         },
     ]
-    //concat method to bring in the questionsForAll array once employee intern has gone through.
+    //concat method to bring in the questionsForAll array once employee engineer has gone through.
     //made it into an object to easily transfer data to class.
     const answers = await inquirer.prompt(employeeEngineer.concat(questionsForAll));
 
-    //Creating a new intern usign the class of Intern
+    //Creating a new Engineer usign the class of Intern
     const engineer = new Engineer(answers);
-    //pushing new Intern into the global array of employees.
+    //pushing new Engineer into the global array of employees.
     employeeInfo.push(engineer);
     addEmployee();
  }
