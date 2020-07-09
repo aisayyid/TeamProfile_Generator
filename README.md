@@ -16,9 +16,17 @@
   
   - Once the user runs the app, it will ask him to pick a type of emplyee, using the lists from inquirer.
   
+  ![](images/EmployeesList.png)
+  
+  - Once the user picks the type of employee he would like to add, a switch method is used to run a function specific to that type of employee.
+  
+  ![](images/SwitchCase.png)
+  
+  - So if that employee was a manager, it would run the manager function.  This function contains a specific question for a manager role.  The answer is then concatinated to the questionforAll function, which asks for information that all employees have in commmon. Using the async await method, the functions run one after another instead of the same time, which would cause multiple questions to be asked at once if not used.  A new Manager is then  created using the Manager subclass, which is tied to the Employee Class.  Once the new role is created it is pushed to a global array called employeeInfo.
+  
   ![](images/Managerfunction.png)
   
-   ![](images/SwitchCase.png)
+  
   
   - Using inquirer prompts, I set up arrays of questions for the user to answer based on their employees info.
   ![](images/GeneralEmployeeQuestions.png)
@@ -26,7 +34,7 @@
   
   ![](images/Engineer_Subclass.png)
   
-  ![](images/EmployeesList.png)
+
   
   
   
