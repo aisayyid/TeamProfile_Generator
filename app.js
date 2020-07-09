@@ -11,7 +11,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
 // const that prompts questions for all employees, no matter the role.
 const questionsForAll = [
     {
@@ -29,9 +28,9 @@ const questionsForAll = [
         name: "email",
         message: "What is this employee's email?"
     },
- ]
+]
 //List to select what type of employee you would like to add.
- const userQuestions = [
+const userQuestions = [
     {
         type: "list",
         name: "role",
@@ -43,9 +42,9 @@ const questionsForAll = [
             "Stop adding employees to team."
         ]
     },
- ]
- //Setting up function for manager specific question.
- async function managerQuestions() {
+]
+//Setting up function for manager specific question.
+async function managerQuestions() {
     const employeeManager = [
         {
             type: "input",
@@ -53,18 +52,17 @@ const questionsForAll = [
             message: "What is the manager's office number?"
         },
     ]
-     //concat method to bring in the questionsForAll array once employee manager has gone through.
+    //concat method to bring in the questionsForAll array once employee manager has gone through.
     //made it into an object to easily transfer data to class.
     const answers = await inquirer.prompt(employeeManager.concat(questionsForAll));
-
     //Creating a new manager usign the class of Intern
     const manager = new Manager(answers);
     //pushing new manager into the global array of employees.
     employeeInfo.push(manager);
     addEmployee();
- }
- //setting up function for engineer specific question.
- async function engineerQuestions() {
+}
+//setting up function for engineer specific question.
+async function engineerQuestions() {
     const employeeEngineer = [
         {
             type: "input",
@@ -75,15 +73,14 @@ const questionsForAll = [
     //concat method to bring in the questionsForAll array once employee engineer has gone through.
     //made it into an object to easily transfer data to class.
     const answers = await inquirer.prompt(employeeEngineer.concat(questionsForAll));
-
     //Creating a new Engineer usign the class of Intern
     const engineer = new Engineer(answers);
     //pushing new Engineer into the global array of employees.
     employeeInfo.push(engineer);
     addEmployee();
- }
- //setting up function for intern specific question.
- async function internQuestions() {
+}
+//setting up function for intern specific question.
+async function internQuestions() {
     const employeeIntern = [
         {
             type: "input",
@@ -100,46 +97,46 @@ const questionsForAll = [
     //pushing new Intern into the global array of employees.
     employeeInfo.push(intern);
     addEmployee();
- }
- //function that calls const depending on role picked.
+}
+//function that calls const depending on role picked.
 //  function askQuestion(questions) {
 //     inquirer.prompt(questions)
 //  }
-function addEmployee(){
- inquirer.prompt(userQuestions)
-    .then(function (answer) {
-        ///determine which role was selected
-        switch (answer.role) {
-            case "Engineer":
-                //run engineer function
-                engineerQuestions();
-                break;
-            case "Manager":
-                //run manager function
-                managerQuestions();
-                break;
-            case "Intern":
-                //run Intern function
-                internQuestions();
-                break;
-            //once the user is done adding employees, the function to generate the html is called.
+function addEmployee() {
+    inquirer.prompt(userQuestions)
+        .then(function (answer) {
+            ///determine which role was selected
+            switch (answer.role) {
+                case "Engineer":
+                    //run engineer function
+                    engineerQuestions();
+                    break;
+                case "Manager":
+                    //run manager function
+                    managerQuestions();
+                    break;
+                case "Intern":
+                    //run Intern function
+                    internQuestions();
+                    break;
+                //once the user is done adding employees, the function to generate the html is called.
                 default:
-               writeFile();
-        }
-    })
+                    writeFile();
+            }
+        })
 }
 //Function for generating html file with the team.
-function writeFile () {
+function writeFile() {
 
-fs.writeFile(outputPath, render(employeeInfo), function (err) {
+    fs.writeFile(outputPath, render(employeeInfo), function (err) {
 
-    if (err) {
-        return console.log(err);
-    }
+        if (err) {
+            return console.log(err);
+        }
 
-    console.log("HTML generation successfull!");
+        console.log("HTML generation successfull!");
 
-});
+    });
 }
 addEmployee();
 
