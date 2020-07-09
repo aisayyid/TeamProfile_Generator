@@ -57,7 +57,7 @@ const questionsForAll = [
     askQuestion(employeeManager.concat(questionsForAll));
  }
  //setting up function for engineer specific question.
- function engineerQuestions() {
+ async function engineerQuestions() {
     const employeeEngineer = [
         {
             type: "input",
@@ -65,8 +65,15 @@ const questionsForAll = [
             message: "What is your engineer's GitHub profile?"
         },
     ]
-    //concat method to bring in the questionsForAll array once employee engineer has gone through.
-    askQuestion(employeeEngineer.concat(questionsForAll));
+    //concat method to bring in the questionsForAll array once employee intern has gone through.
+    //made it into an object to easily transfer data to class.
+    const answers = await inquirer.prompt(employeeEngineer.concat(questionsForAll));
+
+    //Creating a new intern usign the class of Intern
+    const engineer = new Engineer(answers);
+    //pushing new Intern into the global array of employees.
+    employeeInfo.push(engineer);
+    addEmployee();
  }
  //setting up function for intern specific question.
  async function internQuestions() {
@@ -123,7 +130,7 @@ fs.writeFile(outputPath, render(employeeInfo), function (err) {
         return console.log(err);
     }
 
-    console.log("Read me generation successfull!");
+    console.log("HTML generation successfull!");
 
 });
 }
