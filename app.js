@@ -78,9 +78,10 @@ const questionsForAll = [
         },
     ]
     //concat method to bring in the questionsForAll array once employee intern has gone through.
+    //made it into an object to easily transfer data to class.
     const answers = await inquirer.prompt(employeeIntern.concat(questionsForAll));
 
-    console.log(answers);
+    
     const intern = new Intern(answers);
     employeeInfo.push(intern);
     addEmployee();
