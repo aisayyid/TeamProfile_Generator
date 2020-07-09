@@ -113,7 +113,8 @@ function addEmployee() {
                     break;
                 case "Manager":
                     //run manager function
-                    
+                    managerQuestions();
+                    break;
                 case "Intern":
                     //run Intern function
                     internQuestions();
