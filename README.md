@@ -16,15 +16,15 @@
   
   ![](images/Employee_Class.png)
   
-  ![](images/)
+  ![](images/Engineer_Subclass.png)
   
-  ![](images/GeneralEmployeeQuestions)
+  ![](images/GeneralEmployeeQuestions.png)
   
-  ![](images/)
+  ![](images/Managerfunction.png)
   
-  ![](images/)
+  ![](images/SwitchCase.png)
   
-  [](images/)
+  [](images/WriteFileFunction.png)
   ## License
   MIT
   ## Contributing
