@@ -40,7 +40,8 @@ const questionsForAll = [
         choices: [
             "Manager",
             "Engineer",
-            "Intern"
+            "Intern",
+            "Stop adding employees to team."
         ]
     },
  ]
