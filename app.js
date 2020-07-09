@@ -14,7 +14,25 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const userQuestions = [
+const questionsForAll = [
+    {
+        type: "input",
+        name: "employee-name",
+        message: "What is this employee's name?"
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "What is this employee's id number?"
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is this employee's email?"
+    },
+ ]
+
+ const userQuestions = [
     {
         type: "list",
         name: "role",
@@ -25,9 +43,9 @@ const userQuestions = [
             "Intern"
         ]
     },
-]
-//Setting up function for manager specific question.
-function managerQuestions() {
+ ]
+ //Setting up function for manager specific question.
+ function managerQuestions() {
     const employeeManager = [
         {
             type: "input",
@@ -35,10 +53,11 @@ function managerQuestions() {
             message: "What is the manager's office number?"
         },
     ]
-    askQuestion(employeeManager);
-}
-//setting up function for engineer specific question.
-function engineerQuestions() {
+    //concat method to bring in the questionsForAll array once employee manager has gone through.
+    askQuestion(employeeManager.concat(questionsForAll));
+ }
+ //setting up function for engineer specific question.
+ function engineerQuestions() {
     const employeeEngineer = [
         {
             type: "input",
@@ -46,10 +65,11 @@ function engineerQuestions() {
             message: "What is your engineer's GitHub profile?"
         },
     ]
-    askQuestion(employeeEngineer);
-}
-//setting up function for intern specific question.
-function internQuestions() {
+    //concat method to bring in the questionsForAll array once employee engineer has gone through.
+    askQuestion(employeeEngineer.concat(questionsForAll));
+ }
+ //setting up function for intern specific question.
+ function internQuestions() {
     const employeeIntern = [
         {
             type: "input",
@@ -57,36 +77,14 @@ function internQuestions() {
             message: "What is your intern's university?"
         },
     ]
-
-    askQuestion(employeeIntern);
-}
-//setting up function for general employee questions.
-function employeeQuestions() {
-    const questionsForAll = [
-        {
-            type: "input",
-            name: "employee-name",
-            message: "What is this employee's name?"
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is this employee's id number?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is this employee's email?"
-        },
-    ]
-    askQuestion(questionsForAll);
-}
-//function that calls const depending on role picked.
-function askQuestion(questions) {
+    //concat method to bring in the questionsForAll array once employee intern has gone through.
+    askQuestion(employeeIntern.concat(questionsForAll));
+ }
+ //function that calls const depending on role picked.
+ function askQuestion(questions) {
     inquirer.prompt(questions)
-}
-
-inquirer.prompt(userQuestions)
+ }
+ inquirer.prompt(userQuestions)
     .then(function (answer) {
         ///determine which role was selected
         switch (answer.role) {
@@ -104,7 +102,6 @@ inquirer.prompt(userQuestions)
                 break;
         }
     })
-
 
 
 // After the user has input all employees desired, call the `render` function (required
