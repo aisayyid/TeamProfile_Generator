@@ -48,7 +48,7 @@ async function managerQuestions() {
     const employeeManager = [
         {
             type: "input",
-            name: "officenumber",
+            name: "officeNumber",
             message: "What is the manager's office number?"
         },
     ]
