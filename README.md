@@ -49,5 +49,6 @@
   ## Questions
   For any questions, [mailto:alexisayyid@gmail.com], or visit my [GitHub] (https://github.com/aisayyid) 
   
-  ![](images/TeamGenerator_Demo.mp4)
+  ### Demo Video
+  https://drive.google.com/file/d/1CulC9QqzkFuJzuAWjswKcjjgIEKfKsJo/view
  
