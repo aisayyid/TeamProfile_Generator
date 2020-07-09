@@ -22,28 +22,25 @@
   
   ![](images/SwitchCase.png)
   
-  - So if that employee was a manager, it would run the manager function.  This function contains a specific question for a manager role.  The answer is then concatinated to the questionforAll function, which asks for information that all employees have in commmon. Using the async await method, the functions run one after another instead of the same time, which would cause multiple questions to be asked at once if not used.  A new Manager is then  created using the Manager subclass, which is tied to the Employee Class.  Once the new role is created it is pushed to a global array called employeeInfo.
+  - So if that employee was a manager, it would run the manager function.  This function contains a specific question for a manager role.  The answer is then concatinated to the questionforAll function, which asks for information that all employees have in commmon. Using the async await method, the functions run one after another instead of the same time, which would cause multiple questions to be asked at once if not used.  A new Manager is then  created using the Manager subclass, which is tied to the Employee Class.  Once the new role is created it is pushed to a global array called employeeInfo.  Finally, it calls the addEmployee function which contains the switch method, which loops us back to the first prompt.
   
   ![](images/Managerfunction.png)
   
+  ![](images/Manager_Subclass.png)
   
-  
-  - Using inquirer prompts, I set up arrays of questions for the user to answer based on their employees info.
-  ![](images/GeneralEmployeeQuestions.png)
   ![](images/Employee_Class.png)
   
-  ![](images/Engineer_Subclass.png)
-  
-
   
   
+  - The array concat method used in the manager/engineer/internQuestions functions then leads to these prompts.
   
-
+  ![](images/GeneralEmployeeQuestions.png)
   
- 
+  - Once the user is done adding employees by choosing the "stop adding employees to team" choice in the first prompt, it runs the default in the switch method, which calls the writeFile function.  The function uses global variables that set the output path, and set a render function which hooks up the html file which calls all the methods that grabbed info from the users responses within the Employee class and its subclasses that will generate the html using the global array of employeeQuestions, which contains all the employees added to the team.
   
   ![](images/WriteFileFunction.png)
-  ## License
+ 
+ ## License
   MIT
   ## Contributing
   
