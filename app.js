@@ -66,7 +66,7 @@ async function engineerQuestions() {
     const employeeEngineer = [
         {
             type: "input",
-            name: "GitHub",
+            name: "github",
             message: "What is your engineer's GitHub profile?"
         },
     ]
