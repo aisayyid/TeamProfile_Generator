@@ -1,0 +1,28 @@
+.jumbotron{
+    background-color: teal;
+    color:white;
+}
+
+.card{
+    margin-right: 5%;
+    margin-top: 3%;
+    color:white; 
+}
+.card-body{
+    background-color: rgb(208, 243, 255);
+}
+
+.card-header{
+    background-color: teal;
+}
+
+.list-group-item{
+    background-color: teal
+}
+
+a{
+    color:rgb(252, 255, 72);
+}
+a:hover{
+    color: rgb(0, 183, 255);
+}
