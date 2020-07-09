@@ -81,8 +81,9 @@ const questionsForAll = [
     //made it into an object to easily transfer data to class.
     const answers = await inquirer.prompt(employeeIntern.concat(questionsForAll));
 
-    
+    //Creating a new intern usign the class of Intern
     const intern = new Intern(answers);
+    //pushing new Intern into the global array of employees.
     employeeInfo.push(intern);
     addEmployee();
  }
