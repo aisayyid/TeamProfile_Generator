@@ -12,12 +12,11 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+// const that prompts questions for all employees, no matter the role.
 const questionsForAll = [
     {
         type: "input",
-        name: "employee-name",
+        name: "name",
         message: "What is this employee's name?"
     },
     {
@@ -31,7 +30,7 @@ const questionsForAll = [
         message: "What is this employee's email?"
     },
  ]
-
+//List to select what type of employee you would like to add.
  const userQuestions = [
     {
         type: "list",
@@ -50,7 +49,7 @@ const questionsForAll = [
     const employeeManager = [
         {
             type: "input",
-            name: "office-number",
+            name: "officenumber",
             message: "What is the manager's office number?"
         },
     ]
@@ -70,21 +69,27 @@ const questionsForAll = [
     askQuestion(employeeEngineer.concat(questionsForAll));
  }
  //setting up function for intern specific question.
- function internQuestions() {
+ async function internQuestions() {
     const employeeIntern = [
         {
             type: "input",
-            name: "intern-school",
+            name: "school",
             message: "What is your intern's university?"
         },
     ]
     //concat method to bring in the questionsForAll array once employee intern has gone through.
-    askQuestion(employeeIntern.concat(questionsForAll));
+    const answers = await inquirer.prompt(employeeIntern.concat(questionsForAll));
+
+    console.log(answers);
+    const intern = new Intern(answers);
+    employeeInfo.push(intern);
+    addEmployee();
  }
  //function that calls const depending on role picked.
- function askQuestion(questions) {
-    inquirer.prompt(questions)
- }
+//  function askQuestion(questions) {
+//     inquirer.prompt(questions)
+//  }
+function addEmployee(){
  inquirer.prompt(userQuestions)
     .then(function (answer) {
         ///determine which role was selected
@@ -101,9 +106,26 @@ const questionsForAll = [
                 //run Intern function
                 internQuestions();
                 break;
+            //once the user is done adding employees, the function to generate the html is called.
+                default:
+               writeFile();
         }
     })
+}
+//Function for generating html file with the team.
+function writeFile () {
 
+fs.writeFile(outputPath, render(employeeInfo), function (err) {
+
+    if (err) {
+        return console.log(err);
+    }
+
+    console.log("Read me generation successfull!");
+
+});
+}
+addEmployee();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
